@@ -15,17 +15,14 @@ use Doctrine\ORM\EntityManagerInterface;
 class SecurityController extends AbstractController
 {
     #[Route('/login', name: 'app_login', methods: ['GET','POST'])]
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        
+    public function login( AuthenticationUtils $authenticationUtils): Response
+    {  
         return $this->render('security/login.html.twig', [
             'last_username' => $authenticationUtils->getLastUsername(),
             'error' => $authenticationUtils->getLastAuthenticationError(),
             
         ]);
        
-           
-          
     }
 
     #[Route('logout', 'app_logout')]
