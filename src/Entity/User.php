@@ -18,14 +18,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-     #[ORM\Column(length: 50)]
-     private ?string $firstName = null;
+    #[ORM\Column(length: 50)]
+    private ?string $firstName = null;
 
-     #[ORM\Column(length: 50)]
-     private ?string $lastName = null;
+    #[ORM\Column(length: 50)]
+    private ?string $lastName = null;
 
-     #[ORM\Column(length: 10)]
-     private ?string $address = null;
+    #[ORM\Column(length: 10)]
+    private ?string $address = null;
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
@@ -47,6 +47,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Article::class, orphanRemoval: true)]
     private Collection $articles;
 
+
+   
+  
    public function __construct(){
       $this->createdAt = new \DateTimeImmutable();
       $this->articles = new ArrayCollection();

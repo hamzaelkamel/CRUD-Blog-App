@@ -17,7 +17,7 @@ class ArticleController extends AbstractController
     public function index(ArticleRepository $repository): Response
     {         
         return $this->render('article/index.html.twig', [
-            'articles' =>$repository->findBy(['user' => $this->getUser() ]),
+            'articles' =>$repository->findBy(['user' => $this->getUser()]),
         ]);
     }
 
