@@ -10,10 +10,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class ArticleController extends AbstractController
 {
      #[Route('/article', name: 'app_article')]
+     #[IsGranted('ROLE_USER')]
     public function index(ArticleRepository $repository): Response
     {         
         return $this->render('article/index.html.twig', [
@@ -22,6 +25,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/article/new','article.new',methods:['GET','POST'])]
+    #[IsGranted('ROLE_USER')]
     public function new( Request $request, EntityManagerInterface $manager): Response
     {
         $article = new article();
@@ -49,6 +53,7 @@ class ArticleController extends AbstractController
 
     
    #[Route('article/edit/{id}','article_edit', methods: ['GET','POST'])]
+   #[Security("is_granted('ROLE_USER') and user === article.getUser()")]
    public function edit( Article $article , Request $request, EntityManagerInterface $manager ): Response
    {
    
