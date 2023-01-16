@@ -34,17 +34,18 @@ class AppFixtures extends Fixture
            $manager->persist($user);
         }
         $articles = [];
-        for( $i=0 ;  $i<5 ;$i++ ){   
+        for( $i=0 ;  $i<100 ;$i++ ){   
         $article = new Article();
         $article->setTitle('the last Technologes');
         $article->setContent($this->faker->realText($maxNbChars = 250));
-        $article->setCategory('programation');
+        $article->setCategory('Programming');
         $article->setUser($users[mt_rand(0 , count($users) -1 )]);
         $articles[] = $article;
         $manager->persist($article);
     }
         
-
+  
+       
         $manager->flush();
     }
 }

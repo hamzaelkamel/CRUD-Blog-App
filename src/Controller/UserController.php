@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Form\UserType;
 use App\Form\UserPasswordType;
+use App\Repository\ArticleRepository;
+use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -89,4 +92,7 @@ public function editPassword(User $choosenUser ,Request $request , EntityManager
     'form' => $form->createView()
    ]);
 }
+
+
+
 }

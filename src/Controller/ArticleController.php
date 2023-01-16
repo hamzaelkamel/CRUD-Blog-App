@@ -2,9 +2,14 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use App\Entity\Article;
+use App\Entity\Comments;
+use Doctrine\Persistence\ManagerRegistry;
+use \DateTime;
 use App\Repository\ArticleRepository;
 use App\Form\ArticleType;
+use App\Form\CommentsType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,15 +17,22 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Knp\Component\Pager\PaginatorInterface;
 
 class ArticleController extends AbstractController
 {
-     #[Route('/article', name: 'app_article')]
      #[IsGranted('ROLE_USER')]
-    public function index(ArticleRepository $repository): Response
-    {         
+     #[Route('/article', name: 'app_article')]
+    public function index(ArticleRepository $repository , PaginatorInterface $paginator , Request $request): Response
+    {    
+        $articles = $paginator->paginate(
+            $repository->findBy(['user' => $this->getUser() ]),
+            $request->query->getInt('page',1),
+            10
+
+        );
         return $this->render('article/index.html.twig', [
-            'articles' =>$repository->findBy(['user' => $this->getUser()]),
+            'articles' => $articles
         ]);
     }
 
@@ -96,4 +108,28 @@ class ArticleController extends AbstractController
        );
         return $this->redirectToRoute('app_article');
     }
+
+    #[Route('/article/details/{id}', name: 'articles_details', methods: ['GET','POST'])]
+    public function details(Article   $article  ,Request $request,ManagerRegistry $doctrine, EntityManagerInterface $manager): Response
+    {
+          $comment = new Comments;
+          $commentForm = $this->createForm(commentsType::class, $comment);
+          $commentForm->handleRequest($request);
+          if($commentForm->isSubmitted() && $commentForm->isValid()){
+              $comment->setCreatedAt(new DateTime());
+              $comment->setArticles($article);
+              $manager = $doctrine->getManager();
+              $manager->persist($comment);
+              $manager->flush();
+              $this->addFlash(
+               'success',
+               'The Comment is add with success');
+               return $this->redirectToRoute('articles_details', ['id'=>$article->getId()]);
+          }
+       return $this->render('home/details.html.twig'  , [
+        'article' => $article,
+        'commentForm'=> $commentForm->createView()
+       ]) ;
+    }
+    
 }

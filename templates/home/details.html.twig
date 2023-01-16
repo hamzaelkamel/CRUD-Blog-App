@@ -1,0 +1,46 @@
+{% include ['header/header.html.twig', 'base.html.twig'] %}
+
+{% block title %}  {% endblock %}
+
+ {% block body %}
+ <div class="container mt-4">
+{% for message in app.flashes('success') %}
+      <div class="alert alert-success mt-4">
+           {{ message }}
+      </div>
+  {% endfor %} 
+<div class="form-control bg-light">
+    <div>
+      <h2 class="m-4">{{article.title}}</h2>
+    </div>
+    <div>
+      <small class="text-muted m-4 "> <i class="bi bi-clock"></i> {{article.createdAt|date('Y-m-d H:i')}} #{{article.Category}} </small>
+    </div>
+    <div>
+      <img style="max-width : 80% ;" src="{{ vich_uploader_asset(article, 'imageFile') }}"  >
+    </div>
+    <div class="m-4">
+      {{article.content}}
+    </div>
+    <div>
+      <h3>The Comments :</h3>
+    {% for comment in article.comments %}
+  <p class="mt-4 bg-warning rounded text-center" style="max-width : 25% ;">Add by {{comment.nickname}} <i class="bi bi-clock"></i> {{comment.createdAt|date("d/m/Y H:i")}}</P>
+  <div class="mt-4">
+    {{comment.content}}
+  <div>
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="form-control mt-4 bg-light">
+<h3 class="m-4">Add a Comment</h3>
+{{ form(commentForm) }}
+</div>
+</div>
+ {% endblock %}
+{% include 'footer/footer.html.twig' %}
+

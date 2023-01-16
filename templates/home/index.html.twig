@@ -1,0 +1,167 @@
+{% include ['header/header.html.twig', 'base.html.twig' ,] %}
+
+
+{% block title %} {% endblock %}
+
+{% block stylesheets %}
+<style>
+.logo { font-size: 200px;}
+@media screen and (max-width: 768px) { .col-sm-4 {   text-align: center; margin: 25px 0; }}
+#our {
+  font-family:  "Times New Roman", Times, serif ;
+}
+#about{
+  background-image: linear-gradient(#0275d8, #292b2c);
+}
+button{
+    border: none;
+}
+.d-flex {
+    margin-buttom: 50%;
+    
+}
+.carousel-inner{
+
+height:85%;
+    
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div id="carouselExampleFade" class="carousel slide" data-interval="3000" data-bs-ride="carousel">
+  <div class="carousel-inner ">
+    <div class="carousel-item active">
+     <img src={{asset('media/back.jpg')}} class="card-img-top  " alt="...">
+    </div>
+    <div class="d-flex h-100 align-items-center justify-content-between container text-light position-absolute row ">
+      <div class="col-4 text-center" >  <h5 >Second slide label</h5> </div>
+       <div class="col-8 text-center">     </div>
+      </div>
+  </div>
+  
+</div>
+
+
+<div class="container">
+
+
+
+<div class="container mt-4 text-center">
+<small class="text-success mt-4">Reasons to Use Wowanology</small>
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-book-fill"></i></h5>
+        <p class="card-text">You Can in Wowanology read alot of article . we have the best writers in the world</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-shield-fill-check"></i></i></h5>
+        <p class="card-text">When you craete acount or share a knowledge all your personal data Protected .</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-star-fill"></i></h5>
+        <p class="card-text">When you visit Wowanology you will get the last news in many subjects.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="row">
+<h4 class=" text-center mt-4 col-12 ">Categorys</h4>
+</div>
+<div class="container-fluid mt-4 row text-algain-ceneter row d-flex justify-content-center ">
+<div class="card  col-3 m-4" >
+<img src={{asset('media/programmation.jpg')}} class="card-img-top " alt="...">
+  <div class="card-body">
+   <button class="card-title bg-white"><h4> Programming </h4></button>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card  col-3 m-4 " >
+<img class="navbar-brand " src={{asset('media/Wowanology.jpg')}} class="card-img-top " alt="...">  <div class="card-body">
+   <button class="card-title bg-white"><h4> Health & Medicine </h4></button>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card  col-3 m-4" >
+<img src={{asset('media/humanities.jpg')}} class="card-img-top " alt="...">
+  <div class="card-body">
+   <button class="card-title bg-white"><h4> Humanities </h4></button>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card  col-3 m-4" >
+<img src={{asset('media/business.jpg')}} class="card-img-top " alt="...">
+  <div class="card-body">
+    <button class="card-title bg-white"><h4> Business </h4></button>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card  col-3 m-4 " >
+<img src={{asset('media/science.jpg')}} class="card-img-top " alt="...">
+  <div class="card-body">
+   <button class="card-title bg-white"><h4> Science </h4></button>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card  col-3 m-4" >
+<img src={{asset('media/social-sciences.jpg')}} class="card-img-top " alt="...">
+  <div class="card-body">
+   <button class="card-title bg-white"><h4> Social Sciences </h4></button>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="row">
+<h4 class=" text-center mt-4 col-12 ">About us</h4>
+</div>
+<div class="container mt-4 text-white rounded " id="about">
+
+<div class="container-fluid container mt-4    ">
+  <div class="row">
+    <div class="col-sm-4  text-white rounded m-4  " id="our">
+      <h2>Our Story</h2>
+      <h4>"The idea to craete Wowanology is Lorem ipsum ..."</h4>
+    </div>
+  </div>
+</div>
+<div class="container-fluid bg-grey mt-4">
+  <div class="row">
+    <div class="col-sm-4 m-4">
+      <span class="glyphicon glyphicon-globe logo"></span>
+    </div>
+    <div class="col-sm-4  m-4 text-white rounded " id="our">
+      <h2>Our Values</h2>
+      <h4><strong>MISSION:</strong> Our mission is Lorem ....</h4>
+      <p><strong>VISION:</strong> Our vision is Lorem ipsum..</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}
+{% include 'footer/footer.html.twig' %}
