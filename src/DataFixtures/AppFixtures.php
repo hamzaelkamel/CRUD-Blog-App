@@ -30,6 +30,7 @@ class AppFixtures extends Fixture
            $user->setEmail($this->faker->email());
            $user->setRoles(['ROLE_USER']);
            $user->setPlainPassword('password');
+           $user->setBio($this->faker->realText($maxNbChars = 150, $indexSize = 2));
            $users[] = $user;
            $manager->persist($user);
         }
@@ -37,7 +38,7 @@ class AppFixtures extends Fixture
         for( $i=0 ;  $i<100 ;$i++ ){   
         $article = new Article();
         $article->setTitle('the last Technologes');
-        $article->setContent($this->faker->realText($maxNbChars = 250));
+        $article->setContent($this->faker->realText($maxNbChars = 5000, $indexSize = 2));
         $article->setCategory('Programming');
         $article->setUser($users[mt_rand(0 , count($users) -1 )]);
         $articles[] = $article;

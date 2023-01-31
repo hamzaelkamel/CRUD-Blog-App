@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Controller\Article;
+use App\Entity\Contact;
+use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,10 +21,28 @@ use Symfony\Component\Security\Core\Security;
 class HomeController extends AbstractController
 {
     #[Route('', name: 'app_home')]
-    public function index(ArticleRepository $repository ): Response
-    {
+    public function index(ArticleRepository $repository , Request $request): Response
+    { 
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $contact = $form->getData();
+            
+            $manager->persist($contact);
+            $manager->flush();
+           
+            $this->addFlash(
+                'success',
+                'The Contact is Add With Success !'
+            );
+            return $this->redirectToRoute('app_contact');
+        }
         return $this->render('home/index.html.twig', [
-            'articles' =>$repository->findBy(['user' => $this->getUser() ]),
+            'controller_name' => 'HomeController',
+            'form' => $form->createView(),
         ]);
     }
 

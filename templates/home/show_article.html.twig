@@ -7,21 +7,23 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
     </head>
-    <body>
+   
+    <body style="background-color: #F0F8FF">
         {% block body %}
-        <div class="mt-4">
-           {% include 'article/filter.html.twig' with {form: form} only %}
+        <div class="mt-4 container">
+        <img class=" d-flex justify-content-end  " style="height: 6rem; width:25rem; margin : auto" src={{asset('media/El_KamelBG3copy.jpg')}}  alt="...">
+         {% include 'article/filter.html.twig' with {form: form} only %}
         </div>
         {% for article in articles %}
         <div class="container mt-4 ">
-        <div class="card m-4 " style="max-width: 540px; ">
+        <div class="card m-4 w-75 p-3 shadow " >
   <div class="row g-0">
     <div class="col-md-4">
       <img style="max-width : 100% ;" src="{{ vich_uploader_asset(article, 'imageFile') }}"  >
        </div>
           <div class="col-md-8">
             <div class="card-body">
-             <h4> <a href="{{ path('articles_details', {"id": article.id })}}" class="text-dark" >{{article.title}}</a></h4>
+             <h4> <a href="{{ path('articles_details', {"id": article.id })}}"  style="text-decoration: none;" >{{article.title}}</a></h4>
                 <p class="card-text" style="overflow-y:hidden;text-overflow:ellipsis; max-height:4.5em;">{{article.content}}</p>
                 <p class="card-text"><small class="text-muted">{{article.Category}}</small></p>
                 <p class="card-text"><small class="text-muted"></small></p>

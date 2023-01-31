@@ -1,0 +1,20 @@
+<body style="background-color: #faebd7 ">
+{{form_start(form)}}
+{% for message in app.flashes('success') %}
+      <div class="alert alert-success mt-4 container">
+           {{ message }}
+      </div>
+    {% endfor %} 
+    <div class="container  "  >
+    <div class="container form-control mt-4 p-4  shadow p-3 mb-5  rounded"  style="background-color: #f5f5dc " >
+      <div class="text-center border-bottom " >
+       <h2 class=" p-4  ">Contact El KamelBG</h2>
+       <p>we are here to help and answer any question you might have . </p>
+       </div>
+       <div class="">
+           {{ form(form) }}
+       </div>
+    </div>
+    </div>
+    </body>
+{{form_end(form)}}

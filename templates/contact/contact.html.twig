@@ -1,0 +1,9 @@
+{% include ['header/header.html.twig', 'base.html.twig'] %}
+
+{% block body %}
+<div>
+{%  include 'contact/index.html.twig' with {form: form} only %}
+</div>
+{% endblock %}
+
+{% include 'footer/footer.html.twig' %}

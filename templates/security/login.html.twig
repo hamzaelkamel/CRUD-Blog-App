@@ -3,8 +3,9 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-   <div class="container">
-      <h1 class="mt-4">Login</h1>
+<body  style="background-image: url('media/backformtest1.jpg');background-repeat: no-repeat;background-size: cover;"  >
+   <div class="container form-control w-25 p-4 shadow " style=" margin-top: 5%; margin-bottom: 10%; background-color: #ffebeb;" >
+      <h1 class=" text-center pb-4 border-bottom">Login</h1>
        {% for message in app.flashes('success') %}
         <div class="alert alert-success mt-4">
            {{ message }}
@@ -15,21 +16,22 @@
         {{ error.messageKey|trans(error.messageData, 'security')}}
         </div>
       {% endif %}
-      <form action="{{ path('app_login')}}" method="post">
-       <div class="form-group">
+      <form action="{{ path('app_login')}}" method="post" >
+       <div class="form-group  ">
           <label for="username" class="form-label mt-4">Email address</label>
-          <input type="email" class="form-control" id="username" name="_username" placeholder="Enter email"
+          <input type="email" class="form-control bg-light " id="username" name="_username" placeholder="Enter email"
           value="{{ last_username }}">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
        </div>
        <div class="form-group">
-          <label for="password" class="form-label mt-4">Password</label>
-          <input type="password" class="form-control" id="password" name="_password" placeholder="Password">
+          <label for="password" class="form-label mt-4 ">Password</label>
+          <input type="password" class="form-control bg-light" id="password" name="_password" placeholder="Password">
        </div>
-       <button  type="submit" class="btn btn-primary mt-4">
-         Login
-       </button>
+       <button  type="submit" class="btn btn-primary  mt-4 mb-2 ">  Login  </button>
+       <p>Create an Account<a  href="{{ path('app_registration') }}"  class="btn btn-white"> <i class="bi bi-arrow-right"></i>  </a> </p>
+       
       </form>
    </div>
-
+</body>
 {% endblock %}
+{% include 'footer/footer.html.twig' %}

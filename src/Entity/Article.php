@@ -22,6 +22,14 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $Title = null;
 
+    /*
+     * @Assert\Image(
+     *     minWidth = 100,
+     *     maxWidth = 150,
+     *     minHeight = 100,
+     *     maxHeight = 150
+     * )
+     */
     #[Vich\UploadableField(mapping: 'recipe_images', fileNameProperty: 'imageName'  )]
     private ?File $imageFile = null ;
 

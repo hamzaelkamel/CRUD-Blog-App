@@ -11,7 +11,10 @@
   font-family:  "Times New Roman", Times, serif ;
 }
 #about{
-  background-image: linear-gradient(#0275d8, #292b2c);
+  background-image: url('media/backaboutus.jpg');
+   background-size: cover;
+   width: 100%;
+   
 }
 button{
     border: none;
@@ -22,7 +25,7 @@ button{
 }
 .carousel-inner{
 
-height:85%;
+height:100%;
     
 }
 </style>
@@ -33,45 +36,49 @@ height:85%;
 <div id="carouselExampleFade" class="carousel slide" data-interval="3000" data-bs-ride="carousel">
   <div class="carousel-inner ">
     <div class="carousel-item active">
-     <img src={{asset('media/back.jpg')}} class="card-img-top  " alt="...">
+     <img src={{asset('media/back10.jpg')}} class="card-img-top  " alt="...">
     </div>
-    <div class="d-flex h-100 align-items-center justify-content-between container text-light position-absolute row ">
-      <div class="col-4 text-center" >  <h5 >Second slide label</h5> </div>
-       <div class="col-8 text-center">     </div>
+    <div class=" d-flex h-100 align-items-center justify-content-between container text-light position-absolute row ">
+     <div class="col-4 text-center "> 
+    <h4 class=" m-4  text-center" style="font-family: cursive;"><span class="text-secondary">El KamelBG </span> when you share the knowledge and Read Articles in many subjects. Sign up Now !! </h4>
+     <a class=" m-4  text-center btn btn-warning" style="width: 5rem;"  href="{{ path('app_registration')}}" >Sign up</a>
+     <a class=" m-4  text-center btn btn-primary" style="width: 8rem;"  href="{{ path('app_show_articles')}}" >Read Articles</a>
+     </div>
+     <div class="col-6 text-center ">
+      <img style="width: 30rem;"  src={{asset('media/testtest.jpg')}}  alt="...">
+     </div>
       </div>
   </div>
   
 </div>
 
 
-<div class="container">
-
-
-
-<div class="container mt-4 text-center">
-<small class="text-success mt-4">Reasons to Use Wowanology</small>
+<div class="container ">
+<div class="container mt-4 p-4 text-center">
+<small class="text-success  ">Reasons to Use El kamelBG</small>
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
-  <div class="col">
-    <div class="card h-100">
+  <div class="col ">
+    <div class="card h-100 shadow">
       <div class="card-body">
-        <h5 class="card-title"><i class="bi bi-book-fill"></i></h5>
-        <p class="card-text">You Can in Wowanology read alot of article . we have the best writers in the world</p>
+        <h5 class="card-title pb-4 border-bottom" ><i class="bi-sm bi-book bi-sm "></i></h5>
+        <p class="card-text mt-4"> Best Customer Service Blogs to Start Reading Today
+Finding the right industry blog to hold your interest can be a hassle, but in El kamelBG You Can read alot of article. we have the best writers in the world</p>
       </div>
     </div>
   </div>
   <div class="col">
-    <div class="card h-100">
+    <div class="card h-100 shadow">
       <div class="card-body">
-        <h5 class="card-title"><i class="bi bi-shield-fill-check"></i></i></h5>
-        <p class="card-text">When you craete acount or share a knowledge all your personal data Protected .</p>
+        <h5 class="card-title pb-4 border-bottom"><i class="bi bi-shield-check"></i></i></h5>
+        <p class="card-text mt-4">When you create account or share a knowledge, all your personal data is Protected .</p>
       </div>
     </div>
   </div>
   <div class="col">
-    <div class="card h-100">
+    <div class="card h-100 shadow">
       <div class="card-body">
-        <h5 class="card-title"><i class="bi bi-star-fill"></i></h5>
-        <p class="card-text">When you visit Wowanology you will get the last news in many subjects.</p>
+        <h5 class="card-title pb-4 border-bottom"><i class="bi bi-star"></i></h5>
+        <p class="card-text mt-4">If you are someone who loves to teach, El kamelBG  can be a platform for teaching people who have an interest in your areas of expertise. Through blogging, you will not only teach others, but you will also teach yourself more about the topic.</p>
       </div>
     </div>
   </div>
@@ -81,71 +88,21 @@ height:85%;
 
 
 
-<div class="row">
-<h4 class=" text-center mt-4 col-12 ">Categorys</h4>
+    
+
+
+
+
+
+<div class="row mt-4" id="about-section" >
+<h4 class=" text-center  mt-4 mb-4 col-12 "  >About us</h4>
 </div>
-<div class="container-fluid mt-4 row text-algain-ceneter row d-flex justify-content-center ">
-<div class="card  col-3 m-4" >
-<img src={{asset('media/programmation.jpg')}} class="card-img-top " alt="...">
-  <div class="card-body">
-   <button class="card-title bg-white"><h4> Programming </h4></button>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card  col-3 m-4 " >
-<img class="navbar-brand " src={{asset('media/Wowanology.jpg')}} class="card-img-top " alt="...">  <div class="card-body">
-   <button class="card-title bg-white"><h4> Health & Medicine </h4></button>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card  col-3 m-4" >
-<img src={{asset('media/humanities.jpg')}} class="card-img-top " alt="...">
-  <div class="card-body">
-   <button class="card-title bg-white"><h4> Humanities </h4></button>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card  col-3 m-4" >
-<img src={{asset('media/business.jpg')}} class="card-img-top " alt="...">
-  <div class="card-body">
-    <button class="card-title bg-white"><h4> Business </h4></button>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card  col-3 m-4 " >
-<img src={{asset('media/science.jpg')}} class="card-img-top " alt="...">
-  <div class="card-body">
-   <button class="card-title bg-white"><h4> Science </h4></button>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card  col-3 m-4" >
-<img src={{asset('media/social-sciences.jpg')}} class="card-img-top " alt="...">
-  <div class="card-body">
-   <button class="card-title bg-white"><h4> Social Sciences </h4></button>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-<div class="row">
-<h4 class=" text-center mt-4 col-12 ">About us</h4>
-</div>
-<div class="container mt-4 text-white rounded " id="about">
-
+<div class="container mt-4  text-white rounded shadow"   id="about">
 <div class="container-fluid container mt-4    ">
   <div class="row">
-    <div class="col-sm-4  text-white rounded m-4  " id="our">
+    <div class="col-sm-4  text-dark rounded m-4  " id="our">
       <h2>Our Story</h2>
-      <h4>"The idea to craete Wowanology is Lorem ipsum ..."</h4>
+      <h4>"The idea to craete El kamelBG is build many projects and this is one of them ,  and to get that i us the best and last technologie "</h4>
     </div>
   </div>
 </div>
@@ -154,13 +111,17 @@ height:85%;
     <div class="col-sm-4 m-4">
       <span class="glyphicon glyphicon-globe logo"></span>
     </div>
-    <div class="col-sm-4  m-4 text-white rounded " id="our">
+    <div class="col-sm-4  m-4  rounded  text-dark" id="our">
       <h2>Our Values</h2>
-      <h4><strong>MISSION:</strong> Our mission is Lorem ....</h4>
-      <p><strong>VISION:</strong> Our vision is Lorem ipsum..</p>
+      <h4><strong>MISSION:</strong> Our mission is ...</h4>
+      <p><strong>VISION:</strong> Our vision is ...</p>
     </div>
   </div>
 </div>
+</div>
+<div id="contact">
+<h4 class=" text-center  p-4 mt-4 col-12 ">Contact us</h4>
+{%  include 'contact/index.html.twig' with {form: form} only %}
 </div>
 </div>
 {% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\UserRepository;
+use App\Data\SearchData;
+use App\Form\SearchForm;
 use App\Entity\Article;
 use App\Entity\Comments;
 use Doctrine\Persistence\ManagerRegistry;
@@ -21,8 +23,9 @@ use Knp\Component\Pager\PaginatorInterface;
 
 class ArticleController extends AbstractController
 {
+     
+     #[Route('/article', name: 'app_article' )]
      #[IsGranted('ROLE_USER')]
-     #[Route('/article', name: 'app_article')]
     public function index(ArticleRepository $repository , PaginatorInterface $paginator , Request $request): Response
     {    
         $articles = $paginator->paginate(
@@ -80,7 +83,7 @@ class ArticleController extends AbstractController
        
         $this->addFlash(
             'success',
-            'The Article is Modify With Success !'
+            'The Article is Modify With successfully !'
         );
         return $this->redirectToRoute('app_article');
 
@@ -104,14 +107,15 @@ class ArticleController extends AbstractController
        $manager->flush();
        $this->addFlash(
         'success',
-        'The Article is Deleted With Success !'
+        'The Article is Deleted '
        );
         return $this->redirectToRoute('app_article');
     }
 
     #[Route('/article/details/{id}', name: 'articles_details', methods: ['GET','POST'])]
-    public function details(Article   $article  ,Request $request,ManagerRegistry $doctrine, EntityManagerInterface $manager): Response
+    public function details(Article   $article ,ArticleRepository $repository ,Request $request,ManagerRegistry $doctrine, EntityManagerInterface $manager): Response
     {
+       
           $comment = new Comments;
           $commentForm = $this->createForm(commentsType::class, $comment);
           $commentForm->handleRequest($request);
@@ -123,12 +127,13 @@ class ArticleController extends AbstractController
               $manager->flush();
               $this->addFlash(
                'success',
-               'The Comment is add with success');
+               'The Comment is add with successfully');
                return $this->redirectToRoute('articles_details', ['id'=>$article->getId()]);
           }
        return $this->render('home/details.html.twig'  , [
         'article' => $article,
-        'commentForm'=> $commentForm->createView()
+        'commentForm'=> $commentForm->createView(),
+        
        ]) ;
     }
     

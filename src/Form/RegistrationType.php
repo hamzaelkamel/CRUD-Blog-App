@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 
 class RegistrationType extends AbstractType
@@ -20,7 +22,7 @@ class RegistrationType extends AbstractType
         $builder
             ->add('firstName', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control  bg-light',
                     'minlenght' => '2',
                     'maxlenght' => '50',
                 ],
@@ -31,7 +33,7 @@ class RegistrationType extends AbstractType
             ])
             ->add('lastName',TextType::class,[
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control bg-light',
                     'minlenght' => '2',
                     'maxlenght' => '50',
                 ],
@@ -40,9 +42,15 @@ class RegistrationType extends AbstractType
                     'class' => 'form_label mt-4 '
                 ],
             ])
+            ->add('imageFile' , VichImageType::class,[
+                'label'=> 'Image Profil',
+                'label_attr'=> [
+                    'class'=>'form-label mt-4'
+                ]
+            ])
             ->add('address',TextType::class,[
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control bg-light',
                     'minlenght' => '5',
                     'maxlenght' => '250',
                 ],
@@ -51,9 +59,21 @@ class RegistrationType extends AbstractType
                     'class' => 'form_label mt-4'
                 ],
             ])
+            ->add('bio', TextareaType::class,[
+                'attr' => [
+                    'class' => 'form-control ',
+                    'rows'=>'8',
+                    
+
+                ],
+                'label' => 'Bio ',
+                'label_attr' => [
+                    'class' => 'form_label mt-4'
+                ],
+            ])
             ->add('email' , EmailType::class,[
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control bg-light',
                     'minlenght' => '2',
                     'maxlenght' => '180',
                 ],
@@ -66,7 +86,7 @@ class RegistrationType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => [
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control  bg-light',
                     ],
                     'label' => 'Password',
                     'label_attr' => [
@@ -75,7 +95,7 @@ class RegistrationType extends AbstractType
                 ],
                 'second_options' => [
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control bg-light',
                     ],
                     'label' => 'Password Confirmation',
                     'label_attr' => [

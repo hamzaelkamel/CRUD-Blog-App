@@ -1,22 +1,29 @@
 {% include ['header/header.html.twig', 'base.html.twig'] %}
 
 {% block body %}
- <div class="container mt-4">
-    <h1>Edit The Article</h1>
-    {{ form_start(form)}}
+<body style="background-color: rgb(0, 255, 255)">
+ <div class="container form-control bg-light w-75 p-4" style=" margin-top: 5%; margin-bottom: 10%;" >
+    <h1 class="m-4 text-center pb-4 border-bottom ">Edit The Article</h1>
+  {{ form_start(form)}}
     <div class="form-error">
         {{form_errors(form)}}
     </div>
-    <div class="form-group mt-4">
+    <div class="form-group ">
       {{form_row(form.Title)}}
     </div>
-    <div class="form-group mt-4">
-      {{form_row(form.Content)}} 
+    <div class="form-group " rows="9" >
+     <p> {{form_row(form.Content)}} </p>
     </div>
-    <div class="form-group mt-4">
+    <div class="form-group ">
       {{form_row(form.Category)}}
     </div>
+    <div class="form-group mt-4 mb-4  ">
+      {{form_row(form.imageFile)}}
+    </div>
+    
     <button type="submit" class="btn btn-primary mt-4">Submit</button>
  {{ form_end(form)}}
  </div>
+ </body>
 {% endblock %}
+{% include 'footer/footer.html.twig' %}

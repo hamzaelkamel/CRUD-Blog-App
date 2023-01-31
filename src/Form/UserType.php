@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
 {
@@ -37,6 +38,12 @@ class UserType extends AbstractType
                 'class' => 'form_label mt-4 '
             ],
         ])
+        ->add('imageFile' , VichImageType::class,[
+            'label'=> 'Image Profil',
+            'label_attr'=> [
+                'class'=>'form-label mt-4'
+            ]
+        ])
         ->add('address',TextType::class,[
             'attr' => [
                 'class' => 'form-control',
@@ -56,6 +63,17 @@ class UserType extends AbstractType
             'label_attr' => [
                 'class' => 'form-label mt-4'
             ]
+        ])
+        ->add('bio', TextType::class,[
+            'attr' => [
+                'class' => 'form-control',
+                'minlenght' => '10',
+                'maxlenght' => '500',
+            ],
+            'label' => 'Bio ',
+            'label_attr' => [
+                'class' => 'form_label mt-4'
+            ],
         ])
         ->add('submit', SubmitType::class,[
             'attr' => [

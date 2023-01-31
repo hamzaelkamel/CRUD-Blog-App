@@ -3,6 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+<body style="background-color: rgb(0, 255, 255)">
        <div class="container  mt-4">
              <h1>Mes Articles</h1>
   {% for message in app.flashes('success') %}
@@ -15,31 +16,29 @@
     <div class="count mt-4">
      You have : {{ articles.getTotalItemCount }} articles.
   </div>
+   
   <table class="table table-hover mt-4 ">
   <thead>
-    <tr class="table-primary">
-      <th scope="col">Number of Article</th>
+    <tr class="table-info">
+      <th scope="col">Number of article</th>
       <th scope="col">Title</th>
-      <th scope="col">Article Image</th>
-      <th scope="col">The Articles of you </th>
+      <th scope="col">Article cover</th>
       <th scope="col">Category</th>
       <th scope="col">Time of create</th>
     </tr>
   </thead>
   <tbody >
+     
    {% for article in articles %}
-     <tr class="table-active  ">
-      <td >{{article.id}}</td>
+     <tr class="table-light  ">
+
       <td >{{article.title}}</td>
-      <td  ><img style="max-width : 20%;  " src="{{ vich_uploader_asset(article, 'imageFile') }}"  ></td>
-      <td ><textarea  class="form-control bg-info" cols="50" rows="3">{{article.content}}</textarea></td>
+      <td  ><img style="max-width : 50%;  " src="{{ vich_uploader_asset(article, 'imageFile') }}"  ></td>
       <td >{{article.Category}}</td>
       <td >{{article.createdAt|date('Y-m-d H:i')}}</td>
       <td ><a href="{{ path('article_edit', { id: article.id } ) }}" class="btn btn-info" > Edit </a></td>
-      <td  ><a href="{{ path('article_delete', { id: article.id } ) }}" class="btn btn-danger" > Delete </a></td>
-       
+      <td  ><a href="{{ path('article_delete', { id: article.id } ) }}" class="btn btn-danger" > Delete </a></td> 
     </tr>
-   
         {% endfor %}
    </tbody>
     </table>
@@ -47,6 +46,7 @@
          {{knp_pagination_render(articles)}}
       </div>
        </div>
+       </body>
 {% endblock %}
 {% include 'footer/footer.html.twig' %}
 

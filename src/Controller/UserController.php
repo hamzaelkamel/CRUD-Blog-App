@@ -55,8 +55,9 @@ class UserController extends AbstractController
     
 }
 
+
+#[Route('user/editPassword/{id}', 'app_edit.password' , methods:['GET','POST'])]
 #[Security("is_granted('ROLE_USER') and user === choosenUser")]
-#[Route('user/edit_password/{id}', 'app_edit.password' , methods:['GET','POST'])]
 public function editPassword(User $choosenUser ,Request $request , EntityManagerInterface $manager, UserPasswordHasherInterface $hasher): Response
 { 
    
@@ -88,11 +89,40 @@ public function editPassword(User $choosenUser ,Request $request , EntityManager
            );
        }}
 
-   return $this->render('user/edit_password.html.twig ',[
+   return $this->render('user/editPassword.html.twig' , [
     'form' => $form->createView()
    ]);
 }
 
+#[Security("is_granted('ROLE_USER') ")]
+#[Route('user/delete/{id}','user_delete', methods: ['GET'])]
+public function delete(EntityManagerInterface $manager, User $user ): Response
+{
+   if(!$user){
+    $this->addFlash(
+        'success',
+        'The User is Deleted With Success !'
+    );
+    return $this->redirectToRoute('app_article');
+   }
+   $manager->remove($user);
+   $manager->flush();
+   $this->addFlash(
+    'success',
+    'The user is Deleted '
+   );
+    return $this->redirectToRoute('app_home');
+}
+
+#[Security("is_granted('ROLE_USER') ")]
+#[Route('user/account/', 'app_account' , methods:['GET','POST'])]
+public function account( Request $request, EntityManagerInterface $manager): Response
+{
+    
+    return $this->render('user/account.html.twig', [
+        'controller_name' => 'UserController',
+    ]);
+}
 
 
 }

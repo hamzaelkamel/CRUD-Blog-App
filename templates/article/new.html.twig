@@ -1,8 +1,9 @@
 {% include ['header/header.html.twig', 'base.html.twig'] %}
 
 {% block body %}
- <div class="container mt-4">
-    <h1>Add New Article</h1>
+<body style="background-color: rgb(0, 255, 255)">
+ <div class="container  form-control  bg-light w-50 p-4" style=" margin-top: 5%; margin-bottom: 10%;">
+    <h1 class="m-4 text-center pb-4 border-bottom">Add New Article</h1>
     {{ form_start(form)}}
     <div class="form-error">
         {{form_errors(form)}}
@@ -13,8 +14,8 @@
      <div class="form-group mt-4">
       {{form_row(form.imageFile)}}
     </div>
-    <div class="form-group mt-4">
-      {{form_row(form.Content)}} 
+    <div class="form-group mt-4" >
+       {{form_row(form.Content)}} 
     </div>
     <div class="form-group mt-4">
       {{form_row(form.Category)}}
@@ -22,4 +23,6 @@
     <button type="submit" class="btn btn-primary mt-4">Submit</button>
  {{ form_end(form)}}
  </div>
+ </body>
 {% endblock %}
+{% include 'footer/footer.html.twig' %}

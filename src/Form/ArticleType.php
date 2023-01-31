@@ -18,13 +18,13 @@ class ArticleType extends AbstractType
         $builder
             ->add('Title' ,TextType::class,[
             'attr' => [
-                'class' => 'form-control mt-4',
+                'class' => 'form-control ',
                 'minlenght' => '2',
                 'maxlenght' => '50',
             ],
             'label' => 'Title',
             'label_attr' => [
-                'class' => 'form_label mt-4'
+                'class' => 'form-label mt-4'
             ],
            ] )
             ->add('imageFile' , VichImageType::class,[
@@ -34,13 +34,14 @@ class ArticleType extends AbstractType
                 ]
             ])
             ->add('Content' , TextareaType::class,[
-                'attr' => array('cols' => '9', 'rows' => '3'),
+                'attr' => array('cols' => '10', 'rows' => '10'),
                 'attr' => [
-                    'class' => 'form-control mt-4',
+                    'class' => 'form-control ',
+                    'style'=>'text-align:justify'
                 ],
-                'label' => ' write the  article ',
+                'label' => ' write the article ',
                 'label_attr' => [
-                'class' => 'form_label mt-4'
+                'class' => 'form-label mt-4'
             ],
             ])
             ->add('Category', ChoiceType::class,[
@@ -53,11 +54,11 @@ class ArticleType extends AbstractType
                 'Social Sciences' => 'Social Sciences',
             ],
             'attr' => [
-                'class' => 'form-control mt-4',
+                'class' => 'form-control ',
             ],
             'label' => 'choice your Category ',
                 'label_attr' => [
-                'class' => 'form_label mt-4'
+                'class' => 'form-label mt-4'
             ],
            ] )
         ;

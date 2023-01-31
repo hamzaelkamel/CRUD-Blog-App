@@ -3,13 +3,17 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    <div class="container">
-      <h1 class="mt-4"> Edit Your Profil  </h1>
+<body style="background-color: rgb(0, 255, 255)">
+    <div class="container form-control bg-light w-50 p-4" style=" margin-top: 5%; margin-bottom: 10%;">
+      <h1 class=" m-4 text-center pb-4 border-bottom"> Edit Your Profil   </h1>
       {% for message in app.flashes('warning') %}
         <div class="alert alert-success mt-4">
            {{ message }}
         </div>
         {% endfor %} 
       {{form(form)}}
+      
     </div>
+</body>
 {% endblock %}
+{% include 'footer/footer.html.twig' %}

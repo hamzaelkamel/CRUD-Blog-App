@@ -3,13 +3,15 @@
 {% block title %}  {% endblock %}
 
  {% block body %}
+ <body style="background-color: #F0F8FF">
  <div class="container mt-4">
 {% for message in app.flashes('success') %}
       <div class="alert alert-success mt-4">
            {{ message }}
       </div>
   {% endfor %} 
-<div class="form-control bg-light">
+<img style="height: 6rem; width:25rem ; margin-left : 30% ;" class="pb-4" src={{asset('media/El_KamelBG3copy.jpg')}}  alt="logo">
+<div class="form-control bg-light shadow ">
     <div>
       <h2 class="m-4">{{article.title}}</h2>
     </div>
@@ -17,10 +19,10 @@
       <small class="text-muted m-4 "> <i class="bi bi-clock"></i> {{article.createdAt|date('Y-m-d H:i')}} #{{article.Category}} </small>
     </div>
     <div>
-      <img style="max-width : 80% ;" src="{{ vich_uploader_asset(article, 'imageFile') }}"  >
+      <img  style="max-width : 60% ; max-height: 60% ; margin-left : 20% "  src="{{ vich_uploader_asset(article, 'imageFile') }}"  >
     </div>
-    <div class="m-4">
-      {{article.content}}
+    <div class="m-4 p-4">
+      <p>{{article.content}}</p>
     </div>
     <div>
       <h3>The Comments :</h3>
@@ -28,7 +30,7 @@
   <p class="mt-4 bg-warning rounded text-center" style="max-width : 25% ;">Add by {{comment.nickname}} <i class="bi bi-clock"></i> {{comment.createdAt|date("d/m/Y H:i")}}</P>
   <div class="mt-4">
     {{comment.content}}
-  <div>
+  </div>
 {% endfor %}
 </div>
 </div>
@@ -36,11 +38,12 @@
 </div>
 
 
-<div class="form-control mt-4 bg-light">
+<div class="form-control container mt-4 shadow">
 <h3 class="m-4">Add a Comment</h3>
 {{ form(commentForm) }}
 </div>
-</div>
+</body>
  {% endblock %}
+
 {% include 'footer/footer.html.twig' %}
 
